@@ -1,0 +1,62 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob-1
+spec:
+  schedule: "*/30 * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 600
+      template:
+        spec:
+          containers:
+          - name: my-container
+            image: localhost:5000/exampleapplication:0.2
+            env:
+            - name: URL
+              value: https://cloudflare.com
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob-2
+spec:
+  schedule: "*/45 * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 600
+      template:
+        spec:
+          containers:
+          - name: my-container
+            image: localhost:5000/exampleapplication:0.2
+            env:
+            - name: URL
+              value: https://google.com
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob-3
+spec:
+  schedule: "*/15 * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 600
+      template:
+        spec:
+          containers:
+          - name: my-container
+            image: localhost:5000/exampleapplication:0.2
+            env:
+            - name: URL
+              value: https://bing.com
+          restartPolicy: OnFailure
