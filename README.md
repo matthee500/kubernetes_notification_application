@@ -11,7 +11,7 @@ The Python script is written to perform a specific task, such as scraping data f
 2. Get a Discord webhook URL and place it in the `discord_url` variable in the Python script.
 3. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and enable Kubernetes.
 Build the Docker image with either the latest tag or a specific tag. This tag will be used to push the image to a local or external container registry.
-4. Tag the image for use on the container registry using the tag specified in the previous step. For example, to tag an image for use on a local registry: `docker tag exampleapplication:0.1 localhost:5000/exampleapplication:0.1` .
-5. Push the container to the registry. For example, to push an image to a local registry: `docker push localhost:5000/exampleapplication:0.1` .
+4. Tag the image for use on the container registry using the tag specified in the previous step. For example, to tag an image for use on a local registry: `docker tag exampleapplication:0.2 localhost:5000/exampleapplication:0.2` .
+5. Push the container to the registry. For example, to push an image to a local registry: `docker push localhost:5000/exampleapplication:0.2` .
 6. Run the Kubernetes deployment file: `kubectl apply -f kubernetes-script.yaml` .
 7. The application will now send notifications on Discord on the schedule that was defined in the `kubernetes-script.yaml` file. If the time specified was `"*/30 * * * *"` a notification will be sent at minute 0 and minute 30 of every hour, 10:00 and 10:30 for example. 
